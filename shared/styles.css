@@ -304,15 +304,25 @@ body[data-trainer] {
         flex-direction: row;
         gap: 6px;
         width: auto;
+        max-width: calc(100vw - 24px);
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 0 2px;
     }
+    .trainer-nav::-webkit-scrollbar { display: none; }
+
     .trainer-nav .nav-item {
-        width: auto;
+        flex: 0 0 auto;
+        min-width: 96px;
         min-height: 42px;
         padding: 6px 12px;
         flex-direction: row;
         align-items: center;
+        justify-content: center;
         gap: 6px;
-        text-align: left;
+        text-align: center;
+        white-space: nowrap;
     }
     .trainer-nav .nav-item:hover { transform: translateY(-2px); }
     .trainer-nav .nav-num {
@@ -322,22 +332,33 @@ body[data-trainer] {
         opacity: 0.55;
     }
     .trainer-nav .nav-label { font-size: 0.8rem; }
-    .trainer-nav .nav-item.nav-home .nav-num { font-size: 0.9rem; }
-    .trainer-nav .nav-item.nav-home .nav-label { font-size: 0.72rem; }
 
+    /* Домашняя кнопка — узкая, только иконка */
+    .trainer-nav .nav-item.nav-home {
+        min-width: 44px;
+        padding: 6px 10px;
+    }
+    .trainer-nav .nav-item.nav-home .nav-num { font-size: 0.9rem; }
+
+    /* Кнопка темы — в правый нижний угол, чтобы не перекрывать сайдбар */
     .theme-toggle {
-        top: 12px;
-        right: 12px;
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
+        top: auto;
+        bottom: 20px;
+        right: 16px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
     }
 }
 
 @media (max-width: 480px) {
+    .trainer-nav .nav-item {
+        min-width: 84px;
+        padding: 6px 10px;
+    }
+    .trainer-nav .nav-label { font-size: 0.72rem; }
     .trainer-nav .nav-num { display: none; }
-    .trainer-nav .nav-item { padding: 8px 12px; }
-    .trainer-nav .nav-label { font-size: 0.82rem; }
+    .trainer-nav .nav-item.nav-home { min-width: 40px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

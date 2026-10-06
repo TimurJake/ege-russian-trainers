@@ -166,6 +166,8 @@ h1 {
     user-select: none;
     text-align: center;
     position: relative;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 .letter.consonant { color: var(--consonant); }
 
@@ -178,17 +180,21 @@ h1 {
     transform: translateX(-50%);
     width: 55%;
     height: 1px;
-    background: var(--vowel-underline);
+    background: rgba(240, 240, 240, 0.25);
     border-radius: 1px;
     transition: all 0.25s ease;
 }
-.letter.vowel:hover {
-    background: var(--vowel-hover-bg);
-    transform: translateY(-2px);
-}
-.letter.vowel:hover::after {
-    width: 80%;
-    background: var(--vowel-underline-hover);
+
+/* Ховер — только на устройствах с настоящей мышью (ПК, ноутбук) */
+@media (hover: hover) and (pointer: fine) {
+    .letter.vowel:hover {
+        background: rgba(255, 255, 255, 0.06);
+        transform: translateY(-2px);
+    }
+    .letter.vowel:hover::after {
+        width: 80%;
+        background: rgba(240, 240, 240, 0.7);
+    }
 }
 
 .letter.correct {
