@@ -3,8 +3,8 @@
     const TRAINERS = [
         { id: 'home',      badge: '⌂',          title: 'Все тренажёры', href: 'index.html'   },
         { id: 'stress',    badge: 'Задание 4',  title: 'Ударения',      href: 'stress/index.html' },
-        { id: 'grammar15', badge: 'Задание 15', title: 'Н и НН', href: 'grammar-15/index.html' },
         { id: 'suffixes11', badge: 'Задание 11', title: 'Суффиксы', href: 'suffixes-11/index.html' },
+        { id: 'grammar15', badge: 'Задание 15', title: 'Н и НН', href: 'grammar-15/index.html' },
     ];
 
     const body = document.body;
