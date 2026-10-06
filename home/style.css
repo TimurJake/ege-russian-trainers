@@ -1,0 +1,243 @@
+/* ===== HERO ===== */
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeUp 0.85s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+.hero-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    background: var(--hero-tag-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    padding: 6px 15px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+h1 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    background: linear-gradient(180deg, var(--h1-from) 0%, var(--h1-to) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+    font-size: 0.94rem;
+    color: var(--text-muted);
+    letter-spacing: 0.01em;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ===== CONTAINER ГЛАВНОЙ ===== */
+.home-wrap {
+    max-width: 920px;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+    padding: 32px 20px;
+}
+
+/* ===== GRID КАРТОЧЕК ===== */
+.trainers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+}
+
+/* ===== КАРТОЧКА ===== */
+.trainer-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 20px 16px;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition:
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.35s ease,
+        box-shadow 0.4s ease,
+        background 0.35s ease;
+    animation: fadeUp 0.75s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+    isolation: isolate;
+    cursor: pointer;
+}
+.trainer-card:nth-child(1) { animation-delay: 0.12s; }
+.trainer-card:nth-child(2) { animation-delay: 0.22s; }
+.trainer-card:nth-child(3) { animation-delay: 0.32s; }
+.trainer-card:nth-child(4) { animation-delay: 0.42s; }
+
+.trainer-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%),
+                var(--card-glow), transparent 45%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+.trainer-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
+    background: var(--surface-glass-hover);
+    box-shadow: var(--card-shadow);
+}
+.trainer-card:hover::before { opacity: 1; }
+.trainer-card:active { transform: translateY(-1px); }
+.trainer-card > * { position: relative; z-index: 1; }
+
+.card-top { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.card-symbol {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 2.15rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    flex-shrink: 0;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 46px;
+    text-align: center;
+}
+.trainer-card:hover .card-symbol { transform: translateY(-2px) scale(1.05); }
+.card-symbol .sym-accent {
+    color: var(--text-dim);
+    font-weight: 400;
+    margin: 0 1px;
+    font-size: 0.85em;
+}
+.card-titles { flex: 1; min-width: 0; }
+.card-task {
+    display: inline-block;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 3px;
+    transition: color 0.3s ease;
+}
+.trainer-card:hover .card-task { color: var(--text); }
+.card-title {
+    font-size: 1.12rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    line-height: 1.2;
+}
+.card-arrow {
+    font-size: 1rem;
+    color: var(--text-dim);
+    flex-shrink: 0;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.trainer-card:hover .card-arrow {
+    color: var(--text);
+    transform: translate(3px, -3px);
+}
+.card-desc {
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 14px;
+    flex: 1;
+}
+.card-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    transition: border-color 0.35s ease;
+}
+.trainer-card:hover .card-foot { border-color: var(--border-hover); }
+.card-meta {
+    font-size: 0.74rem;
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+}
+.card-cta {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.trainer-card:hover .card-cta { color: var(--text); }
+.card-cta::after {
+    content: '→';
+    display: inline-block;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.trainer-card:hover .card-cta::after { transform: translateX(4px); }
+
+/* ===== FOOTER ===== */
+.footer-note {
+    text-align: center;
+    margin-top: 34px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    letter-spacing: 0.02em;
+    animation: fadeUp 0.75s cubic-bezier(0.4, 0, 0.2, 1) 0.42s backwards;
+}
+.footer-note span { color: var(--text-muted); font-weight: 500; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .home-wrap { padding: 22px 16px; }
+    .hero { margin-bottom: 28px; }
+    .hero-tag { font-size: 0.64rem; padding: 5px 12px; margin-bottom: 14px; }
+    h1 { font-size: 1.65rem; }
+    .hero-sub { font-size: 0.88rem; }
+    .trainers-grid { grid-template-columns: 1fr; gap: 12px; }
+    .trainer-card { padding: 16px 18px 14px; border-radius: 14px; }
+    .card-symbol { font-size: 1.9rem; min-width: 40px; }
+    .card-title { font-size: 1.05rem; }
+    .card-desc { font-size: 0.8rem; }
+    .footer-note { margin-top: 26px; font-size: 0.76rem; }
+
+    .orb { filter: blur(50px); opacity: 0.4; }
+    .orb-1 { width: 300px; height: 300px; }
+    .orb-2 { width: 340px; height: 340px; }
+    .orb-3 { width: 260px; height: 260px; }
+    .orb-4 { width: 220px; height: 220px; }
+}
+
+.star {
+    position: absolute;
+    background: var(--star-color);
+    border-radius: 50%;
+    opacity: 0.35;
+    animation: twinkle 4s ease-in-out infinite;
+}
+@keyframes twinkle {
+    0%, 100% { opacity: 0.15; transform: scale(0.8); }
+    50%      { opacity: 0.6;  transform: scale(1.3); }
+}
